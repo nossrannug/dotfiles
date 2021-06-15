@@ -83,7 +83,7 @@ call plug#begin('~/.nvim/autoload')
   " Plug 'tpope/vim-markdown'
 
   " " CSS
-  " Plug 'agirorn/vim-coloresque'
+  " Plug 'gunnarsi/vim-coloresque'
   " Plug 'cakebaker/scss-syntax.vim'
   " Plug 'vim-scripts/less.vim'
 
@@ -100,7 +100,7 @@ call plug#begin('~/.nvim/autoload')
   " Plug 'elzr/vim-json'
   " Plug 'moll/vim-node'
   " Plug 'posva/vim-vue'
-  " " Plug 'agirorn/vim-vue'
+  " " Plug 'gunnarsi/vim-vue'
   " Plug 'sekel/vim-vue-syntastic'
   " Plug 'digitaltoad/vim-pug'
 

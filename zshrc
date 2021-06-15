@@ -6,6 +6,7 @@ export ZSH=$HOME/.oh-my-zsh
 # Optionally, if you set this to "random", it'll load a random theme each
 # time that oh-my-zsh is loaded.
 ZSH_THEME="robbyrussell"
+# ZSH_THEME="bira"
 # Uncomment the following line to use case-sensitive completion.
 # CASE_SENSITIVE="true"
 
@@ -77,6 +78,7 @@ plugins=(
   vagrant
   vi-mode
   yarn
+  zsh-autosuggestions
   zsh-better-npm-completion
 )
 
@@ -88,6 +90,9 @@ test -d $HOME/.local/bin && export PATH="$PATH:$HOME/.local/bin"
 # export MANPATH="/usr/local/man:$MANPATH"
 
 source $ZSH/oh-my-zsh.sh
+
+source $HOME/.zsh_my_aliases
+test -d $HOME/.cargo && source $HOME/.cargo/env && export PATH="$HOME/.cargo/bin:$PATH"
 
 # You may need to manually set your language environment
 export LANG=is_IS.UTF-8
@@ -127,8 +132,23 @@ function gdwide() {
 # No delay
 export KEYTIMEOUT=1
 
-[[ -s "/home/agirorn/.gvm/scripts/gvm" ]] && source "/home/agirorn/.gvm/scripts/gvm"
+[[ -s "$($HOME)/.gvm/scripts/gvm" ]] && source "$($HOME)/.gvm/scripts/gvm"
 
 setopt noincappendhistory
 setopt nosharehistory
 export LUCINITY_UPDATE_RC=false
+
+export PYENV_ROOT="$HOME/.pyenv"
+export PATH="$PYENV_ROOT/bin:$PATH"
+if command -v pyenv 1>/dev/null 2>&1; then
+  eval "$(pyenv init -)"
+fi
+# Add RVM to PATH for scripting. Make sure this is the last PATH variable change.
+export PATH="$PATH:$HOME/.rvm/bin"
+export PATH="/usr/local/opt/ruby/bin:$PATH"
+export NVM_DIR="$HOME/.nvm"
+[ -s "$NVM_DIR/nvm.sh" ] && . "$NVM_DIR/nvm.sh"  # This loads nvm
+[ -s "$NVM_DIR/bash_completion" ] && . "$NVM_DIR/bash_completion"  # This loads nvm bash_completion
+
+source ~/.my_exports
+source ~/.my_fzf

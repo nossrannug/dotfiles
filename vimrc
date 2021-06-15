@@ -54,7 +54,7 @@ Plugin 'tpope/vim-fugitive'
 Plugin 'airblade/vim-gitgutter'
 
 "" CSS
-Plugin 'agirorn/vim-coloresque'
+Plugin 'gunnarsi/vim-coloresque'
 Plugin 'cakebaker/scss-syntax.vim'
 Plugin 'vim-scripts/less.vim'
 
@@ -75,7 +75,7 @@ Plugin 'myhere/vim-nodejs-complete'
 Plugin 'elzr/vim-json'
 Plugin 'moll/vim-node'
 Plugin 'posva/vim-vue'
-" Plugin 'agirorn/vim-vue'
+" Plugin 'gunnarsi/vim-vue'
 Plugin 'sekel/vim-vue-syntastic'
 Plugin 'digitaltoad/vim-pug'
 

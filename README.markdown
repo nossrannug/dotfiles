@@ -18,6 +18,8 @@ Installation
 ------------
 
 ``` bash
-git clone git://github.com/agirorn/dotfiles ~/dotfiles
+git clone git://github.com/nossrannug/dotfiles ~/dotfiles
 cd ~/dotfiles && ./setup.sh
 ```
+
+This is stolen from: https://github.com/agirorn/dotfiles
