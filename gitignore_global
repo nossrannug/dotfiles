@@ -1,0 +1,64 @@
+# Vim Swapfiles.
+.*.swp
+.*.swo
+.*.swm
+.*.swn
+
+.swp
+.swo
+.swm
+.swn
+
+# IDE's
+.vscode
+
+# Compiled source #
+###################
+*.com
+*.class
+*.dll
+*.exe
+*.o
+*.so
+
+# Packages #
+############
+# it's better to unpack these files and commit the raw source
+# git has its own built in compression methods
+*.7z
+*.dmg
+*.gz
+*.iso
+*.rar
+*.tar
+*.zip
+
+# Logs and databases #
+######################
+*.log
+*.sqlite
+
+# OS generated files #
+######################
+.DS_Store
+.DS_Store?
+._*
+.Spotlight-V100
+.Trashes
+Icon?
+ehthumbs.db
+Thumbs.db
+
+node_modules/
+
+# Hiding custom django settings
+clear_cache_first_settings.py
+
+# ctags file generated with the command "ctags -R"
+/tags
+
+/.MY-TODO.md
+TODO.md
+
+# PHP storm
+/.idea/

@@ -1,0 +1,14 @@
+#!/usr/bin/env zsh
+#
+# Upgrade dotfiles and dependencies.
+#
+
+# exit on any error.
+set -e
+
+# Update dotfiles
+./update
+
+# Build vim plugins.
+./setup-tern-for-vim
+./build-you-complete-me

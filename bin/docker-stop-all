@@ -1,0 +1,9 @@
+#!/usr/bin/env bash
+
+containers=$(sudo docker ps -qa)
+if [[ ${containers} ]]; then
+  echo "stopping all containers"
+  sudo docker stop ${containers}
+else
+  echo "There are no containers to stop"
+fi

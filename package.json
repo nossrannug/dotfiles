@@ -1,0 +1,16 @@
+{
+  "name": "Dotfiles",
+  "description": "Global dependencies for my system",
+  "private": false,
+  "scripts": {
+    "install": "./bin/npm-global-install package.json"
+  },
+  "dependencies": {
+    "bower-cli": "^0.7.0",
+    "eslint": "^5.0.0",
+    "eslint-config-defaults": "^7.1.1",
+    "eslint_d": "^1.10.3",
+    "grunt-cli": "^2.3.1",
+    "tmpin": "^1.0.1"
+  }
+}

@@ -1,0 +1,8 @@
+{
+  "diagnostic.checkCurrentLine": true,
+  "diagnostic.messageTarget": "echo",
+  "javascript.suggestionActions.enabled": false,
+  "list.height": 10,
+  "list.maxPreviewHeight": 12,
+  "signature.preferShownAbove": true
+}
