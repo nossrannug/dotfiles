@@ -13,7 +13,9 @@
 
 ln -s $HOME/dotfiles/ackrc $HOME/.ackrc
 ln -s $HOME/dotfiles/bash $HOME/.bash
+ln -s $HOME/dotfiles/fzf.zsh $HOME/.fzf.zsh
 ln -s $HOME/dotfiles/hammerspoon $HOME/.hammerspoon
+ln -s $HOME/dotfiles/my_fzf $HOME/.my_fzf
 ln -s $HOME/dotfiles/oh-my-zsh $HOME/.oh-my-zsh
 ln -s $HOME/dotfiles/profile $HOME/.profile
 ln -s $HOME/dotfiles/psqlrc $HOME/.psqlrc
@@ -23,6 +25,7 @@ ln -s $HOME/dotfiles/tmux $HOME/.tmux
 ln -s $HOME/dotfiles/tmux.conf $HOME/.tmux.conf
 ln -s $HOME/dotfiles/vim $HOME/.vim
 ln -s $HOME/dotfiles/vimrc $HOME/.vimrc
+ln -s $HOME/dotfiles/zsh_my_aliases $HOME/.zsh_my_aliases
 ln -s $HOME/dotfiles/zshrc $HOME/.zshrc
 
 ## Git
