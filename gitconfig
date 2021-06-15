@@ -7,8 +7,8 @@
   unassume = update-index --no-assume-unchanged
   assumed = !git ls-files -v | grep "^[[:lower:]]"
 [user]
-	name = Ægir Örn Símonarson
-	email = agirorn@gmail.com
+	name = Gunnar Sv Sigurbjörnsson
+	email = gunnar.sigurbjornsson@gmail.com
 [core]
 	excludesfile = ~/.gitignore_global
 [pull]
