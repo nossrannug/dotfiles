@@ -1,3 +1,4 @@
+ZSH_DISABLE_COMPFIX=true
 # Path to your oh-my-zsh installation.
 export ZSH=$HOME/.oh-my-zsh
 
@@ -5,8 +6,8 @@ export ZSH=$HOME/.oh-my-zsh
 # Look in ~/.oh-my-zsh/themes/
 # Optionally, if you set this to "random", it'll load a random theme each
 # time that oh-my-zsh is loaded.
-ZSH_THEME="robbyrussell"
-# ZSH_THEME="bira"
+# ZSH_THEME="robbyrussell"
+ZSH_THEME="bira"
 # Uncomment the following line to use case-sensitive completion.
 # CASE_SENSITIVE="true"
 
@@ -84,7 +85,7 @@ plugins=(
 
 # User configuration
 
-export PATH="/usr/local/bin:/opt/local/bin:/opt/local/sbin:/usr/local/bin:/usr/bin:/bin:/usr/sbin:/sbin"
+# export PATH="/usr/local/bin:/opt/local/bin:/opt/local/sbin:/usr/local/bin:/usr/bin:/bin:/usr/sbin:/sbin"
 test -d $HOME/bin && export PATH="$PATH:$HOME/bin"
 test -d $HOME/.local/bin && export PATH="$PATH:$HOME/.local/bin"
 # export MANPATH="/usr/local/man:$MANPATH"
@@ -132,23 +133,19 @@ function gdwide() {
 # No delay
 export KEYTIMEOUT=1
 
-[[ -s "$($HOME)/.gvm/scripts/gvm" ]] && source "$($HOME)/.gvm/scripts/gvm"
+# [[ -s "$($HOME)/.gvm/scripts/gvm" ]] && source "$($HOME)/.gvm/scripts/gvm"
 
-setopt noincappendhistory
-setopt nosharehistory
 export LUCINITY_UPDATE_RC=false
 
 export PYENV_ROOT="$HOME/.pyenv"
-export PATH="$PYENV_ROOT/bin:$PATH"
-if command -v pyenv 1>/dev/null 2>&1; then
-  eval "$(pyenv init -)"
-fi
+export PATH="$PYENV_ROOT/shims:$PATH"
+# eval "$(pyenv init -)"
 # Add RVM to PATH for scripting. Make sure this is the last PATH variable change.
 export PATH="$PATH:$HOME/.rvm/bin"
 export PATH="/usr/local/opt/ruby/bin:$PATH"
 export NVM_DIR="$HOME/.nvm"
 [ -s "$NVM_DIR/nvm.sh" ] && . "$NVM_DIR/nvm.sh"  # This loads nvm
 [ -s "$NVM_DIR/bash_completion" ] && . "$NVM_DIR/bash_completion"  # This loads nvm bash_completion
-
-source $HOME/.my_exports
+export JAVA_HOME=/usr/local/opt/openjdk
+# source $HOME/.my_exports
 source $HOME/.my_fzf

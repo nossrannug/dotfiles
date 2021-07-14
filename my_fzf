@@ -1,0 +1,96 @@
+#https://seb.jambor.dev/posts/improving-shell-workflows-with-fzf/
+
+export MY_ORG=""
+export MY_PROJECT=""
+
+
+function gch() {
+  git branch -a |
+    grep --invert-match "\*" |
+    sed 's/ *//g' |
+    fzf --preview="git log {}" |
+    sed 's/remotes\/origin\///g' |
+    xargs -r git checkout
+}
+
+# List all active PRs. On selection open PR in browser
+function prs() {
+  local jq_template pr_id repo_name
+  if [ -n "$1" ]; then
+    repo_name="$1"
+  else
+    repo_name="services"
+  fi
+
+  jq_template='"'\
+'ID: \(.pullRequestId) - \(.title)'\
+'\t'\
+'Author: \(.createdBy.displayName)\n'\
+'Created: \(.creationDate)\n\n'\
+'\(.description)'\
+'"'
+  pr_id=$(az repos pr list --organization $MY_ORG --project $MY_PROJECT --repository $repo_name --status active |
+    jq ".[] | $jq_template" |
+    sed -e 's/"\(.*\)"/\1/' -e 's/\\t/\t/' |
+    fzf \
+      --with-nth=1 \
+      --delimiter='\t' \
+      --preview='echo -e {2}' \
+      --preview-window=top:wrap |
+    sed -E 's/^ID: ([0-9]+).*/\1/'
+  )
+  if [ -n "$pr_id" ]; then
+    open -a "Google Chrome" "$MY_ORG$MY_PROJECT/_git/$repo_name/pullrequest/$pr_id"
+  fi
+}
+
+
+# Will show a list of all repos and clone the selected repo
+function clone-repo() {
+  local all_repos selected_repo url
+  echo "Getting repos..."
+  all_repos=$(az repos list --organization $MY_ORG --project $MY_PROJECT)
+  selected_repo=$(echo $all_repos | jq -r '.[] | .name' | fzf)
+  echo $all_repos |
+    jq -r '.[] | select(.name == "'"$selected_repo"'") | .sshUrl' |
+    xargs -r git clone
+}
+
+# Will print json with info on the selected repo
+function view-repo() {
+  local all_repos selected_repo url
+  echo "Getting repos..."
+  all_repos=$(az repos list --organization $MY_ORG --project $MY_PROJECT)
+  selected_repo=$(echo $all_repos | jq -r '.[] | .name' | fzf)
+  echo $all_repos |
+    jq -r '.[] | select(.name == "'"$selected_repo"'")'
+}
+
+# Will show a list of branches that have been merged into develop
+# and allow multy select which branches to delete
+function merged-branch-cleanup() {
+  git branch --merged develop |
+    sed 's/ *//g' |
+    egrep --invert-match "\*|^master$|^develop$" |
+    fzf \
+      --exit-0 \
+      --multi \
+      --preview="git log {}" \
+      --preview-window=top:wrap |
+    xargs -r git branch -d
+}
+
+# Will show a list of branches with no upstream branch
+# and allow multy select which branches to delete
+function no-remote-branch-cleanup() {
+  git branch --format "%(refname:short) %(upstream)" |
+    awk '{if (!$2) print $1;}' |
+    grep --invert-match "\*" |
+    sed 's/ *//g' |
+    fzf \
+      --exit-0 \
+      --multi \
+      --preview="git log {}" \
+      --preview-window=top:wrap |
+    xargs -r git branch -D
+}
