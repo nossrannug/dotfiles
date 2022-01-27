@@ -55,7 +55,6 @@ plugins=(
   bazel
   bower
   bundler
-  cargo
   docker
   docker-compose
   fabric
@@ -78,7 +77,6 @@ plugins=(
   pyenv
   ripgrep
   rust
-  rustup
   rvm
   urltools
   vagrant
@@ -89,14 +87,12 @@ plugins=(
 
 # User configuration
 
-# export PATH="/usr/local/bin:/opt/local/bin:/opt/local/sbin:/usr/local/bin:/usr/bin:/bin:/usr/sbin:/sbin"
 test -d $HOME/bin && export PATH="$PATH:$HOME/bin"
 test -d $HOME/.local/bin && export PATH="$PATH:$HOME/.local/bin"
 # export MANPATH="/usr/local/man:$MANPATH"
 
 source $ZSH/oh-my-zsh.sh
 
-source $HOME/.zsh_my_aliases
 test -d $HOME/.cargo && source $HOME/.cargo/env && export PATH="$HOME/.cargo/bin:$PATH"
 
 # You may need to manually set your language environment
@@ -141,12 +137,36 @@ export KEYTIMEOUT=1
 
 export LUCINITY_UPDATE_RC=false
 
-export PYENV_ROOT="$HOME/.pyenv"
-export PATH="$PYENV_ROOT/shims:$PATH"
+export LDFLAGS="-L/usr/local/opt/zlib/lib"
+export CPPFLAGS="-I/usr/local/opt/zlib/include"
 # eval "$(pyenv init -)"
 # Add RVM to PATH for scripting. Make sure this is the last PATH variable change.
 [ -s "$NVM_DIR/nvm.sh" ] && . "$NVM_DIR/nvm.sh"  # This loads nvm
 [ -s "$NVM_DIR/bash_completion" ] && . "$NVM_DIR/bash_completion"  # This loads nvm bash_completion
 export JAVA_HOME=/usr/local/opt/openjdk
-# source $HOME/.my_exports
+
 source $HOME/.my_fzf
+source $HOME/.zsh_my_aliases
+
+# The next line updates PATH for the Google Cloud SDK.
+if [ -f '/Users/gunnarsi/google-cloud-sdk/path.zsh.inc' ]; then . '/Users/gunnarsi/google-cloud-sdk/path.zsh.inc'; fi
+
+# The next line enables shell command completion for gcloud.
+if [ -f '/Users/gunnarsi/google-cloud-sdk/completion.zsh.inc' ]; then . '/Users/gunnarsi/google-cloud-sdk/completion.zsh.inc'; fi
+export PATH="/usr/local/opt/libpq/bin:$PATH"
+
+jdk() {
+        version=$1
+        export JAVA_HOME=$(/usr/libexec/java_home -v"$version");
+        java -version
+ }
+
+alias postgres="/Users/gunnarsi/postgres.sh"
+load_dotenv() {
+	if [ -f .env ]
+	then
+  		export $(cat .env | sed 's/#.*//g' | xargs)
+	fi
+}
+
+eval "$(zoxide init zsh)"
