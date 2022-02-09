@@ -1,5 +1,5 @@
-#https://seb.jambor.dev/posts/improving-shell-workflows-with-fzf/
-
+# https://seb.jambor.dev/posts/improving-shell-workflows-with-fzf/
+# brew install azure-cli
 export MY_ORG=""
 export MY_PROJECT=""
 
@@ -40,10 +40,9 @@ function prs() {
     sed -E 's/^ID: ([0-9]+).*/\1/'
   )
   if [ -n "$pr_id" ]; then
-    open -a "Google Chrome" "$MY_ORG$MY_PROJECT/_git/$repo_name/pullrequest/$pr_id"
+    open -a "Google Chrome" "$MY_ORG/$MY_PROJECT/_git/$repo_name/pullrequest/$pr_id"
   fi
 }
-
 
 # Will show a list of all repos and clone the selected repo
 function clone-repo() {

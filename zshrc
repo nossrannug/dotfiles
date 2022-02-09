@@ -1,12 +1,7 @@
 ZSH_DISABLE_COMPFIX=true
 # Path to your oh-my-zsh installation.
 export ZSH=$HOME/.oh-my-zsh
-
-export PATH="$PATH:$HOME/.rvm/bin"
-export PATH="/usr/local/opt/ruby/bin:$PATH"
-export NVM_DIR="$HOME/.nvm"
-export PATH=~/.npm-global/bin:$PATH
-
+export PATH="$HOME/.npm-global/bin:$PATH"
 # Set name of the theme to load.
 # Look in ~/.oh-my-zsh/themes/
 # Optionally, if you set this to "random", it'll load a random theme each
@@ -141,6 +136,9 @@ export LDFLAGS="-L/usr/local/opt/zlib/lib"
 export CPPFLAGS="-I/usr/local/opt/zlib/include"
 # eval "$(pyenv init -)"
 # Add RVM to PATH for scripting. Make sure this is the last PATH variable change.
+export PATH="$PATH:$HOME/.rvm/bin"
+export PATH="/usr/local/opt/ruby/bin:$PATH"
+export NVM_DIR="$HOME/.nvm"
 [ -s "$NVM_DIR/nvm.sh" ] && . "$NVM_DIR/nvm.sh"  # This loads nvm
 [ -s "$NVM_DIR/bash_completion" ] && . "$NVM_DIR/bash_completion"  # This loads nvm bash_completion
 export JAVA_HOME=/usr/local/opt/openjdk
@@ -167,6 +165,11 @@ load_dotenv() {
 	then
   		export $(cat .env | sed 's/#.*//g' | xargs)
 	fi
+}
+alias lenv=load_dotenv
+
+clean_pip() {
+  pip freeze | sed -r 's/^-e.*egg=([^&]*).*/\1/' | xargs pip uninstall -y
 }
 
 eval "$(zoxide init zsh)"

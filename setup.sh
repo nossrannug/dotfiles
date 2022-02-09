@@ -19,8 +19,6 @@ ln -s $HOME/dotfiles/my_fzf $HOME/.my_fzf
 ln -s $HOME/dotfiles/oh-my-zsh $HOME/.oh-my-zsh
 ln -s $HOME/dotfiles/profile $HOME/.profile
 ln -s $HOME/dotfiles/psqlrc $HOME/.psqlrc
-ln -s $HOME/dotfiles/pylintrc $HOME/.pylintrc
-ln -s $HOME/dotfiles/pythonrc $HOME/.pythonrc
 ln -s $HOME/dotfiles/tmux $HOME/.tmux
 ln -s $HOME/dotfiles/tmux.conf $HOME/.tmux.conf
 ln -s $HOME/dotfiles/vim $HOME/.vim
